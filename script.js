@@ -211,8 +211,14 @@
 
   const legalDialog = document.getElementById('legalDialog');
   const legalTitle = document.getElementById('legalTitle');
+  const legalText = document.getElementById('legalText');
+  const legalCopy = {
+    Privacy: 'Your project brief is placed into a WhatsApp draft for you to review. It is shared with Twin Torque only if you choose to send it. Appointments are managed by Calendly, which processes booking details under its own privacy terms. This static website does not store enquiry or booking submissions.',
+    Terms: 'Service descriptions and visual studies are general information. Final scope, parts, pricing, timing and any performance figures are confirmed for the specific vehicle before work begins. An appointment request is confirmed only when Calendly shows the booking as complete.'
+  };
   document.querySelectorAll('.legal-trigger').forEach(button => button.addEventListener('click', () => {
     legalTitle.textContent = button.dataset.legal;
+    legalText.textContent = legalCopy[button.dataset.legal] || '';
     legalDialog.showModal();
   }));
   document.getElementById('legalClose')?.addEventListener('click', () => legalDialog.close());
